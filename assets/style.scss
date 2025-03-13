@@ -1,12 +1,21 @@
-$font-size: map-merge(
-  $font-size,
+// Importa le funzioni e variabili di Bootstrap
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// 1. Estendere le classi di font-size fino a .fs-10
+$font-sizes: map-merge(
+  $font-sizes,
   (
     7: $font-size-base * 0.75,
+    // Meno di fs-6
     8: $font-size-base * 0.65,
     9: $font-size-base * 0.55,
-    10: $font-size-base * 0.45,
+    10: $font-size-base * 0.45 // Più piccolo,,,
   )
 );
+
+// 2. Estendere le classi di border-width fino a .border-10
 $border-widths: map-merge(
   $border-widths,
   (
@@ -17,4 +26,88 @@ $border-widths: map-merge(
     10: 10px,
   )
 );
+
+// 3. Applicare fs-10 al testo nel footer
+footer {
+  @extend .fs-10;
+}
+
+// 4. Applicare border-6 alle card della sezione "Saldi"
+.saldi-card {
+  @extend .border-6;
+}
+
+// 5. Applicare border-10 all'immagine dell'offerta del giorno
+.offerta-del-giorno img {
+  border: 10px solid var(--bs-primary); // Azzurro
+}
+
+// 6. Modificare il padding dei bottoni di default
+$btn-padding-y: 0.75rem;
+$btn-padding-x: 2.5rem;
+
+// 7. Cambiare il gutter di default da 1.5rem a 0.5rem
+$grid-gutter-width: 0.5rem;
+
+// 8. Cambiare lo stile di default delle card
+$card-bg: $dark;
+$card-color: $info;
+$card-border-radius: 2rem;
+
+// 9. Cambiare il colore "danger", "info" e "light"
+$danger: #ff0077;
+$info: #00ffea;
+$light: #f3eeff;
+
+// 10. Border-radius a badge, input e bottoni in stile "pillola"
+$badge-border-radius: 50rem;
+$input-border-radius: 50rem;
+$btn-border-radius: 50rem;
+
+// 11. Aggiungere i colori EPICODE alla mappa dei colori
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "epicode-1": #5726c3,
+    "epicode-2": #8625a5,
+    "epicode-3": #cb2376,
+  )
+);
+
+// 12. Applicare colori Epicode alla sezione hero
+.hero-title {
+  color: var(--bs-epicode-1);
+}
+.hero-subtitle {
+  color: var(--bs-epicode-3);
+}
+.hero-btn {
+  background-color: var(--bs-epicode-2);
+  border-color: var(--bs-epicode-2);
+}
+
+// 13. Modificare i bottoni "Nascondi sezione"
+.nascondi-sezione {
+  color: var(--bs-epicode-2);
+  border: 2px solid var(--bs-epicode-2);
+}
+
+// 14. Aggiungere breakpoint "3xl" e "4xl"
+$grid-breakpoints: map-merge(
+  $grid-breakpoints,
+  (
+    3xl: 1600px,
+    4xl: 1800px,
+  )
+);
+$container-max-widths: map-merge(
+  $container-max-widths,
+  (
+    3xl: 1520px,
+    4xl: 1720px,
+  )
+);
+
+// Importa il resto di Bootstrap per generare il CSS
 @import "bootstrap/scss/utilities/api";
+@import "bootstrap/scss/bootstrap";
