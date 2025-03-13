@@ -1,0 +1,20 @@
+$font-size: map-merge(
+  $font-size,
+  (
+    7: $font-size-base * 0.75,
+    8: $font-size-base * 0.65,
+    9: $font-size-base * 0.55,
+    10: $font-size-base * 0.45,
+  )
+);
+$border-widths: map-merge(
+  $border-widths,
+  (
+    6: 6px,
+    7: 7px,
+    8: 8px,
+    9: 9px,
+    10: 10px,
+  )
+);
+@import "bootstrap/scss/utilities/api";
